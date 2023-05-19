@@ -1,37 +1,30 @@
 #include <stdio.h>
-
 /**
-  *main - prints all possible combinations of two digit numbers
-  *
-  *Return: Always 0 (Success)
-  */
+ * main - Entry point of the code.
+ * Return: Always 0 Success.
+ */
 int main(void)
 {
-	int ones = '0';
-	int twos = '0';
-	int hundreds = '0';
+	int digit1, digit2;
 
-	for (hundreds = '0'; hundreds <= '9'; hundreds++)
+	for (digit1 = 0; digit1 <= 98; digit1++)
 	{
-		for (tens = '0'; tens <= '9'; tens++)
+		for (digit2 = digit1 + 1; digit2 <= 99; digit2++)
 		{
-			for (ones = '0'; ones <= '9'; ones++)
+			putchar((digit1 / 10) + '0');
+			putchar((digit1 % 10) + '0');
+			putchar(' ');
+			putchar((digit2 / 10) + '0');
+			putchar((digit2 % 10) + '0');
+
+			if (digit1 == 98 && digit2 == 99)
 			{
-				if (!((ones == tens) || (tens == hundreds) || (tens > ones) || (hundreds > tens))) /*eliminates repetition*/
-				{
-					putchar(hundreds);
-					putchar(tens);
-					putchar(ones);
-					if (!(ones == '9' && hundreds == '7' && tens == '8')) /*adds commas and spaces*/
-					{
-						putchar(',');
-						putchar(' ');
-					}
-				}
+				continue;
 			}
+			putchar(',');
+			putchar(' ');
 		}
 	}
 	putchar('\n');
 	return (0);
 }
-
